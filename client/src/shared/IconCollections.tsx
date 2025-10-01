@@ -2,6 +2,7 @@
 type IconProps = {
     className?: string;
     fill?: string;
+    stroke?: string;
 }
 
 export function MoreSquareIcon({ className = "size-6", fill = "currentColor" } : IconProps) {
@@ -15,5 +16,12 @@ export function SearchIcon({ className } : IconProps) {
     
     return ( 
         <svg className={`h-[1em] opacity-50 ${className}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></g></svg>
+    )
+}
+
+export function BurgerIcon({ className = "size-6", stroke = "currentColor" } : IconProps) {
+    
+    return ( 
+        <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 18L20 18" stroke={stroke} strokeWidth="2" stroke-linecap="round"></path> <path d="M4 12L20 12" stroke={stroke} strokeWidth="2" stroke-linecap="round"></path> <path d="M4 6L20 6" stroke={stroke} strokeWidth="2" stroke-linecap="round"></path></svg>
     )
 }

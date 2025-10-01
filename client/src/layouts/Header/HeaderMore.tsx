@@ -11,17 +11,17 @@ export default function HeaderMore() {
                 </div>
                 <ul tabIndex={0} className="menu dropdown-content bg-base-200 rounded-field z-1 mt-4 w-54 text-center p-2 shadow-sm">
                     <li>
-                        <NavLink to="/home" className={({ isActive }) => isActive ? "border" : ""}>
+                        <NavLink to="/home" className={({ isActive }) => isActive ? "text-info" : ""}>
                             Home
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/quizzes" className={({ isActive }) => isActive ? "border" : ""}>
+                        <NavLink to="/quizzes" className={({ isActive }) => isActive ? "text-info" : ""}>
                             Quizzes
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/classes" className={({ isActive }) => isActive ? "border" : ""}>
+                        <NavLink to="/classes" className={({ isActive }) => isActive ? "text-info" : ""}>
                             Classes
                         </NavLink>
                     </li>

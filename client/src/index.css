@@ -24,10 +24,15 @@
 @layer componenets {
   /* Quizzes Page */
   .quizzes-page-tab {
-    @apply p-3 cursor-pointer;
+    @apply p-3 cursor-pointer flex-1 flex flex-row items-center max-md:justify-center transition-all duration-200 ease-in-out select-none;
+  }
+  .tab-selected {
+    @apply bg-secondary hover:bg-secondary text-base-100 text-base;
   }
 }
 
 @layer utilities {
-
+  .tranall-inout-200 {
+    @apply transition-all duration-200 ease-in-out;
+  }
 }
