@@ -56,11 +56,7 @@ const quizSchema = new Schema<IQuiz>(
                     required: true 
                 },
                 options: [String],
-                correctAnswers: {
-                    type: [String],
-                    required: true,
-                    validate: [(val: string[]) => val.length > 0, "At least one correct answer is required"] 
-                },
+                correctAnswers: [String],
                 timeLimit: { type: Number },
             }
         ]
