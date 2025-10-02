@@ -13,8 +13,8 @@ export async function getQuizzes(_req: Request, res: Response) {
 
 export async function createQuiz(req: Request, res: Response) {
     try {
-        const { title, owner, access, quizKey, questions } = req.body;
-        const newQuiz = new Quiz({title, owner, access, quizKey, questions});
+        const { title, description, owner, access, quizKey, quizTimeLimit, maxAttempts, questions } = req.body;
+        const newQuiz = new Quiz({title, description, owner, access, quizKey, quizTimeLimit, maxAttempts, questions});
 
         const savedQuiz = await newQuiz.save();
         res.status(201).json(savedQuiz);
@@ -26,10 +26,10 @@ export async function createQuiz(req: Request, res: Response) {
 
 export async function updateQuiz(req: Request, res: Response) {
     try {
-        const { title, owner, access, quizKey, questions } = req.body;
+        const { title, description, owner, access, quizKey, quizTimeLimit, maxAttempts, questions } = req.body;
         const updatedQuiz = await Quiz.findByIdAndUpdate(
             req.params.id, 
-            { title, owner, access, quizKey, questions }, 
+            { title, description, owner, access, quizTimeLimit, maxAttempts, quizKey, questions }, 
             { new: true }
         );
 

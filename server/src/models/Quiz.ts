@@ -12,10 +12,17 @@ export interface IQuiz extends Document {
 
     questions: {
         questionText: string;
-        questionType: "multiple-choice" | "identification" | "enumeration" | "essay" | "fill-in-the-blank" | "matching-type" | "true-or-false";
+        questionType: 
+            | "multiple-choice" 
+            | "identification" 
+            | "enumeration" 
+            | "essay" 
+            | "fill-in-the-blank" 
+            | "matching-type" 
+            | "true-or-false";
         options?: string[];
-        correctAnswers: string[];
-        timeLimit: number;
+        correctAnswers?: string[];
+        timeLimit?: number;
     }[];
 
     createdAt: Date;

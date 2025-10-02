@@ -7,6 +7,9 @@ import NotFoundPage from './pages/NotFoundPage'
 import HomePage from './pages/HomePage'
 import QuizzesPage from './pages/Quizzes/QuizzesPage'
 import ClassesPage from './pages/ClassesPage'
+import CreatedTabPage from './pages/Quizzes/Tabs/CreatedTabPage'
+import SavedTabPage from './pages/Quizzes/Tabs/SavedTabPage'
+import TakenTabPage from './pages/Quizzes/Tabs/TakenTabPage'
 
 const router = createBrowserRouter([
 	{
@@ -14,9 +17,14 @@ const router = createBrowserRouter([
 		Component: QuizMaTaApp,
 		errorElement: <NotFoundPage />,
 		children: [
-		{index: true, element: <Navigate to="/home" replace />},
+		{index: true, element: <Navigate to="home" replace />},
 		{path: 'home', Component: HomePage},
-		{path: 'quizzes', Component: QuizzesPage},
+		{path: 'quizzes', Component: QuizzesPage, children: [
+			{index: true, element: <Navigate to="created" replace />},
+			{path: 'created', Component: CreatedTabPage},
+			{path: 'saved', Component: SavedTabPage},
+			{path: 'taken', Component: TakenTabPage}
+		]},
 		{path: 'classes', Component: ClassesPage},
 		]
 	}

@@ -2,6 +2,7 @@ import { useState } from "react"
 import QuizzesSideBar from "./QuizzesSideBar";
 import Tab from "./Tab";
 import type { QuizzesPageTabs } from "../../lib/types";
+import { Outlet } from "react-router";
 
 export default function QuizzesPage() {
     const [selectedTab, setSelectedTab] = useState<QuizzesPageTabs>("created");
@@ -13,7 +14,7 @@ export default function QuizzesPage() {
                     + Create New Quiz
                 </button>
             </div>
-            <div className="h-full grid md:grid-cols-[25%_75%] lg:grid-cols-[250px_1fr] grid-cols-1 border border-base-content/50">
+            <div className="md:h-full grid md:grid-cols-[250px_1fr] grid-cols-1 rounded-box border-2 border-base-content/25 overflow-hidden">
                 <QuizzesSideBar>
                     <Tab label="Created Quizzes" value="created" 
                     selected={selectedTab} onSelect={setSelectedTab} />
@@ -22,8 +23,8 @@ export default function QuizzesPage() {
                     <Tab label="Quizzes Taken" value="taken" 
                     selected={selectedTab} onSelect={setSelectedTab} />
                 </QuizzesSideBar>
-                <section className="grid p-3">
-                    Page
+                <section className="p-3 text-base-content bg-base-100">
+                    <Outlet />
                 </section>
             </div>
         </div>

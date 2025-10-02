@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import { MoreSquareIcon } from "../../shared/IconCollections";
+import { EllipsisVertical } from "lucide-react";
 
 export default function HeaderMore() {
     
@@ -7,7 +7,7 @@ export default function HeaderMore() {
         <div className="xs:hidden">
             <div className="dropdown dropdown-end">
                 <div tabIndex={0} role="button" className="btn btn-ghost rounded-field px-2">
-                    <MoreSquareIcon className="w-7"/>
+                    <EllipsisVertical className="w-7"/>
                 </div>
                 <ul tabIndex={0} className="menu dropdown-content bg-base-200 rounded-field z-1 mt-4 w-54 text-center p-2 shadow-sm">
                     <li>

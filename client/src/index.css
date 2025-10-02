@@ -2,7 +2,7 @@
 @import "tailwindcss";
 @plugin "tailwind-scrollbar";
 @plugin "daisyui" {
-  themes: pastel --default, synthwave --prefersdark, cyberpunk;
+  themes: pastel --default, synthwave --prefersdark, black;
 }
 
 @theme {
@@ -19,20 +19,35 @@
   body {
     @apply font-monst-alter;
   }
+  li {
+    @apply active:bg-transparent;
+  }
+  li a {
+    @apply active:bg-transparent;
+  }
 }
 
 @layer componenets {
   /* Quizzes Page */
   .quizzes-page-tab {
-    @apply p-3 cursor-pointer flex-1 flex flex-row items-center max-md:justify-center transition-all duration-200 ease-in-out select-none;
+    @apply p-3 cursor-pointer flex-1 flex flex-row items-center max-md:justify-center transition-all duration-200 ease-in-out select-none gap-x-0;
   }
   .tab-selected {
-    @apply bg-secondary hover:bg-secondary text-base-100 text-base;
+    @apply bg-secondary hover:bg-secondary text-secondary-content text-base font-bold;
+  }
+  .menu li > *:not(ul):not(.menu-title):not(details):active {
+    @apply bg-transparent;
   }
 }
 
 @layer utilities {
   .tranall-inout-200 {
     @apply transition-all duration-200 ease-in-out;
+  }
+  .hvr-underline-from-center {
+    @apply inline-block align-middle perspective-[1px] translate-z-0 shadow-[0_0_1px_rgba(0,0,0,0)] relative overflow-hidden before:content-[''] before:absolute before:z-[-1] before:left-[51%] before:right-[51%] before:bottom-0 before:bg-accent before:h-[4px] before:transition-[left_right] before:duration-300 before:ease-out hover:before:left-0 hover:before:right-0 focus:before:left-0 focus:before:right-0 active:before:left-0 active:before:right-0;
+  }
+  .grphvr-underline-from-center {
+    @apply inline-block align-middle perspective-[1px] translate-z-0 shadow-[0_0_1px_rgba(0,0,0,0)] relative overflow-hidden before:content-[''] before:absolute before:z-[-1] before:left-[51%] before:right-[51%] before:bottom-0 before:bg-accent before:h-[4px] before:transition-[left_right] before:duration-300 before:ease-out group-hover:before:left-0 group-hover:before:right-0 group-focus:before:left-0 group-focus:before:right-0 group-active:before:left-0 group-active:before:right-0
   }
 }
