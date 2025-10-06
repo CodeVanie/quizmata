@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import type { QuizzesPageTabs } from "../../lib/types";
+import type { QuizzesPageTabs } from "../../../lib/types";
 
 type QuizzesSideBarProps = {
     selected: QuizzesPageTabs;

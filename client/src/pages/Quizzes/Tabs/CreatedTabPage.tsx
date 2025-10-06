@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import type { QuizTypes } from "../../../lib/types";
-import QuizzesSkeleton from "../QuizzesSkeleton";
-import QuizItem from "../QuizItem";
+import QuizzesSkeleton from "../Components/QuizzesSkeleton";
+import QuizItem from "../Components/QuizItem";
 import toast from "react-hot-toast";
 import axiosInstance from "../../../lib/axios";
 
 export default function CreatedTabPage() {
-    console.log("CreatedTabPage Rendered!");
+    // console.log("CreatedTabPage Rendered!");
     const [quizzes, setQuizzes] = useState<QuizTypes[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -23,7 +23,6 @@ export default function CreatedTabPage() {
                 setLoading(false);
             }
         }
-
         fetchQuizzes();
     }, [])
 

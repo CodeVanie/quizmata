@@ -1,5 +1,7 @@
+import type { quizCreateSchema } from "@shared/schemas/quiz.schema";
+import type z from "zod";
 
-export type QuizzesPageTabs = "created" | "saved" | "taken";
+export type QuizzesPageTabs = "created" | "starred" | "taken";
 
 export type QuestionsTypes = {
     questionText: string;
@@ -12,20 +14,22 @@ export type QuestionsTypes = {
         | "matching-type" 
         | "true-or-false";
     options?: string[];
-    correctAnswers: string[];
+    correctAnswers?: string[];
     timeLimit: number;
 }[];
+
+export type QuizAccessTypes = "public" | "private" | "class";
 
 export type QuizTypes = {
     _id: string;
     title: string;
     description?: string;
     owner: string;
-    access: "public" | "private" | "class";
+    access: QuizAccessTypes;
     quizKey: string;
     
-    quizTimeLimit?: number;
-    maxAttempts?: number;
+    quizTimeLimit: number;
+    maxAttempts: number;
 
     questions: QuestionsTypes;
 
@@ -34,3 +38,5 @@ export type QuizTypes = {
     
     __v: number;
 };
+
+export type QuizFormData = z.infer<typeof quizCreateSchema>;

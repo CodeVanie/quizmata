@@ -1,17 +1,22 @@
+import { NavLink } from "react-router";
 
 export default function CreateButton() {
 
     return (
-        <details className="dropdown">
-            <summary className="btn bg-primary text-base-100 font-bold">+ Create</summary>
-            <ul className="menu menu-md dropdown-content bg-base-200 rounded-box z-1 w-36 p-2 shadow-sm gap-y-2 text-base-100 font-bold">
+        <div className="dropdown">
+            <div tabIndex={0} role="button" className="btn bg-primary text-base-100 font-bold">+ Create</div>
+            <ul tabIndex={0} className="dropdown-content menu menu-md bg-base-200 rounded-box z-1 w-36 p-2 shadow-sm gap-y-2 text-base-100 font-bold">
                 <li className="bg-primary rounded-field">
-                    <a className="active:bg-primary/90 focus:bg-primary/90">New Quiz</a>
+                    <NavLink to="/create/quiz" className="active:bg-primary/90 focus:bg-primary/90">
+                        New Quiz
+                    </NavLink>
                 </li>
                 <li className="bg-primary rounded-field">
-                    <a className="active:bg-primary/90 focus:bg-primary/90">New Class</a>
+                    <NavLink to="/create/class" className="active:bg-primary/90 focus:bg-primary/90">
+                        New Class
+                    </NavLink>
                 </li>
             </ul>
-        </details>
+        </div>
     )
 }

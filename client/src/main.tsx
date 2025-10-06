@@ -10,6 +10,8 @@ import ClassesPage from './pages/ClassesPage'
 import CreatedTabPage from './pages/Quizzes/Tabs/CreatedTabPage'
 import SavedTabPage from './pages/Quizzes/Tabs/SavedTabPage'
 import TakenTabPage from './pages/Quizzes/Tabs/TakenTabPage'
+import CreateQuizPage from './pages/CreateQuiz/CreateQuizPage'
+import CreateClassPage from './pages/CreateClassPage'
 
 const router = createBrowserRouter([
 	{
@@ -26,12 +28,16 @@ const router = createBrowserRouter([
 			{path: 'taken', Component: TakenTabPage}
 		]},
 		{path: 'classes', Component: ClassesPage},
+		{path: 'create', children: [
+			{path: 'quiz', Component: CreateQuizPage},
+			{path: 'class', Component: CreateClassPage},
+		]},
 		]
 	}
 ])
 
 createRoot(document.getElementById('root')!).render(
-	<StrictMode>
+	// <StrictMode>
 		<RouterProvider router={router} />
-	</StrictMode>,
+	// </StrictMode>,
 )

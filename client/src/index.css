@@ -2,7 +2,7 @@
 @import "tailwindcss";
 @plugin "tailwind-scrollbar";
 @plugin "daisyui" {
-  themes: pastel --default, synthwave --prefersdark, black;
+  themes: pastel --default, synthwave --prefersdark;
 }
 
 @theme {
@@ -37,6 +37,9 @@
   }
   .menu li > *:not(ul):not(.menu-title):not(details):active {
     @apply bg-transparent;
+  }
+  .input,.label,.textarea,.select {
+    @apply focus-within:outline-0 focus-within:ring-0 focus:outline-0 focus:ring-0;
   }
 }
 

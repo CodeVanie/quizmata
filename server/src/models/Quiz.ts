@@ -7,10 +7,11 @@ export interface IQuiz extends Document {
     access: "public" | "private" | "class";
     quizKey: string;
     
-    quizTimeLimit?: number;
-    maxAttempts?: number;
+    quizTimeLimit: number;
+    maxAttempts: number;
 
     questions: {
+        _id: Types.ObjectId;
         questionText: string;
         questionType: 
             | "multiple-choice" 
@@ -22,7 +23,7 @@ export interface IQuiz extends Document {
             | "true-or-false";
         options?: string[];
         correctAnswers?: string[];
-        timeLimit?: number;
+        timeLimit: number;
     }[];
 
     createdAt: Date;
@@ -41,10 +42,10 @@ const quizSchema = new Schema<IQuiz>(
             required: true 
         },
 
-        quizKey: { type: String, required: true },
+        quizKey: { type: String, required: true, unique: true },
 
-        quizTimeLimit: { type: Number },
-        maxAttempts: { type: Number },
+        quizTimeLimit: { type: Number, required: true, min: 0, max: 180 },
+        maxAttempts: { type: Number, required: true, min: 0, max: 5 },
 
         questions: [
             {
@@ -64,7 +65,7 @@ const quizSchema = new Schema<IQuiz>(
                 },
                 options: [String],
                 correctAnswers: [String],
-                timeLimit: { type: Number },
+                timeLimit: { type: Number, required: true, min: 0, max: 300 },
             }
         ]
 

@@ -12,6 +12,10 @@ export default function QuizzesSkeleton() {
             <QuizSkeleton />
             <QuizSkeleton />
             <QuizSkeleton />
+            <QuizSkeleton />
+            <QuizSkeleton />
+            <QuizSkeleton />
+            <QuizSkeleton />
         </div>
     )
 }
