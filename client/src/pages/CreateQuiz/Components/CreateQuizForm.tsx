@@ -12,15 +12,9 @@ const defaultValues: QuizFormData = {
     owner: "[logged in user]",
     quizTimeLimit: 0,
     maxAttempts: 0,
-    questions: [
-        {
-            questionText: "1 + 1 ?",
-            questionType: "multiple-choice",
-            options: ["3", "0", "1", "2"],
-            correctAnswers: ["2"],
-            timeLimit: 0
-        }
-    ]
+    questionOrder: "ordered",
+    questions: [],
+    passingScore: 1
 }
 
 export default function CreateQuizForm() {
@@ -46,6 +40,7 @@ export default function CreateQuizForm() {
             <form onSubmit={methods.handleSubmit(onSubmit)} className="px-3 flex flex-col justify-center gap-y-3">
                 <QuizDetails />
                 <QuestionsSection />
+                {/* Passing Score */}
                 <button type="submit" className="btn btn-primary">
                     Create
                 </button>

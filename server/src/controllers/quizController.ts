@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import Quiz from "../models/Quiz";
-import { quizSchema } from "@shared/schemas/quiz.schema";
 import { generateUniqueQuizKey } from "../utils/generate.utils";
 
 export async function getQuizzes(_req: Request, res: Response) {

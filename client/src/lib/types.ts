@@ -1,9 +1,10 @@
-import type { quizCreateSchema } from "@shared/schemas/quiz.schema";
+import type { questionSchema, quizCreateSchema } from "@shared/schemas/quiz.schema";
 import type z from "zod";
 
 export type QuizzesPageTabs = "created" | "starred" | "taken";
 
 export type QuestionsTypes = {
+    _id: string;
     questionText: string;
     questionType: 
         | "multiple-choice" 
@@ -15,10 +16,12 @@ export type QuestionsTypes = {
         | "true-or-false";
     options?: string[];
     correctAnswers?: string[];
+    questionPoint: number;
     timeLimit: number;
 }[];
 
 export type QuizAccessTypes = "public" | "private" | "class";
+export type QuizQuestionOrder = "ordered" | "reversed" | "shuffle";
 
 export type QuizTypes = {
     _id: string;
@@ -31,7 +34,10 @@ export type QuizTypes = {
     quizTimeLimit: number;
     maxAttempts: number;
 
+    questionOrder: QuizQuestionOrder;
     questions: QuestionsTypes;
+
+    passingScore: number;
 
     createdAt: string;
     updatedAt: string;
@@ -40,3 +46,4 @@ export type QuizTypes = {
 };
 
 export type QuizFormData = z.infer<typeof quizCreateSchema>;
+export type QuestionFormData = z.infer<typeof questionSchema>;

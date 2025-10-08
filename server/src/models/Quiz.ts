@@ -10,6 +10,8 @@ export interface IQuiz extends Document {
     quizTimeLimit: number;
     maxAttempts: number;
 
+    questionOrder: "ordered" | "reversed" | "shuffle";
+
     questions: {
         _id: Types.ObjectId;
         questionText: string;
@@ -23,8 +25,11 @@ export interface IQuiz extends Document {
             | "true-or-false";
         options?: string[];
         correctAnswers?: string[];
+        questionPoint: number;
         timeLimit: number;
     }[];
+
+    passingScore: number;
 
     createdAt: Date;
     updatedAt: Date;
@@ -35,17 +40,21 @@ const quizSchema = new Schema<IQuiz>(
         title: { type: String, required: true },
         description: { type: String },
         owner: { type: Schema.Types.ObjectId, ref: "User", required: true },
-
         access: { 
             type: String, 
             enum: ["public", "private", "class"],
             required: true 
         },
-
         quizKey: { type: String, required: true, unique: true },
 
         quizTimeLimit: { type: Number, required: true, min: 0, max: 180 },
         maxAttempts: { type: Number, required: true, min: 0, max: 5 },
+
+        questionOrder: { 
+            type: String,
+            enum: ["ordered", "reversed", "shuffle"], 
+            required: true
+        },
 
         questions: [
             {
@@ -65,9 +74,12 @@ const quizSchema = new Schema<IQuiz>(
                 },
                 options: [String],
                 correctAnswers: [String],
+                questionPoint: { type: Number, required: true, min: 1 },
                 timeLimit: { type: Number, required: true, min: 0, max: 300 },
             }
-        ]
+        ],
+
+        passingScore: { type: Number, required: true }
 
     },
     { timestamps: true }

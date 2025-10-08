@@ -19,22 +19,22 @@ const router = createBrowserRouter([
 		Component: QuizMaTaApp,
 		errorElement: <NotFoundPage />,
 		children: [
-		{index: true, element: <Navigate to="home" replace />},
-		{path: 'home', Component: HomePage},
-		{path: 'quizzes', Component: QuizzesPage, children: [
-			{index: true, element: <Navigate to="created" replace />},
-			{path: 'created', Component: CreatedTabPage},
-			{path: 'saved', Component: SavedTabPage},
-			{path: 'taken', Component: TakenTabPage}
-		]},
-		{path: 'classes', Component: ClassesPage},
-		{path: 'create', children: [
-			{path: 'quiz', Component: CreateQuizPage},
-			{path: 'class', Component: CreateClassPage},
-		]},
+			{index: true, element: <Navigate to="home" replace />},
+			{path: 'home', Component: HomePage},
+			{path: 'quizzes', Component: QuizzesPage, children: [
+				{index: true, element: <Navigate to="created" replace />},
+				{path: 'created', Component: CreatedTabPage},
+				{path: 'starred', Component: SavedTabPage},
+				{path: 'taken', Component: TakenTabPage}
+			]},
+			{path: 'classes', Component: ClassesPage},
+			{path: 'create', children: [
+				{path: 'quiz', Component: CreateQuizPage},
+				{path: 'class', Component: CreateClassPage},
+			]},
 		]
 	}
-])
+]);
 
 createRoot(document.getElementById('root')!).render(
 	// <StrictMode>
