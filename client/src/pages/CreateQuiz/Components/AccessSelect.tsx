@@ -16,10 +16,11 @@ export default function AccessSelect({ label, name, register, control }: AccessS
         defaultValue: "public"
     });
     const { selectTheme } = getAccessThemes(access);
+    
     return (
         <div>
             <label className="label">{label}</label>
-            <select {...register(name)} className={`select w-full ${selectTheme}`}>
+            <select {...register(name)} className={`select w-full text-xl ${selectTheme}`}>
                 <option value="public">Public</option>
                 <option value="private">Private</option>
                 <option value="class">Class</option>

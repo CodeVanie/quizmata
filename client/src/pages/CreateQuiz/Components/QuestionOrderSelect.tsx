@@ -7,7 +7,7 @@ export default function QuestionOrderSelect() {
     return (
         <label data-tip="Set the order of the questions when users take your quiz." 
             className="select select-neutral w-full tooltip tooltip-neutral">
-            <span className="label">Questions Order</span>
+            <span className="label">Order</span>
             <select {...register("questionOrder")} className="select">
                 <option value="ordered">Normal Order</option>
                 <option value="reversed">Reversed Order</option>

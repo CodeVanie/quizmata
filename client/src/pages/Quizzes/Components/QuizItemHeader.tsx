@@ -1,6 +1,7 @@
-import { PenSquareIcon, Star, Trash2Icon } from "lucide-react";
+import { PenSquareIcon, Star } from "lucide-react";
 import { capitalizeWords, getAccessThemes } from "../../../lib/utils";
 import type { QuizAccessTypes } from "../../../lib/types";
+import DeleteButton from "../../../shared/components/Buttons/DeleteButton";
 
 export default function QuizItemHeader({ quizAccess }: { quizAccess: QuizAccessTypes }) {
     const { badgeTheme, textTheme, fillTheme } = getAccessThemes(quizAccess);
@@ -20,9 +21,9 @@ export default function QuizItemHeader({ quizAccess }: { quizAccess: QuizAccessT
                 <button className="btn btn-soft btn-xs btn-warning max-sm:text-[10px]">
                     Edit<PenSquareIcon className="size-4"/>
                 </button>
-                <button className="btn btn-soft btn-xs text-red-500 hover:bg-red-500 hover:text-base-100 max-sm:text-[10px]">
-                    Delete<Trash2Icon className="size-4"/>
-                </button>
+                <DeleteButton IconSize="4" className="btn-xs text-red-500 hover:bg-red-500 hover:text-base-100 max-sm:text-[10px]">
+                    Delete
+                </DeleteButton>
             </div>
         </div>
     )

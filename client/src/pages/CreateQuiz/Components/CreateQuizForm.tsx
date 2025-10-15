@@ -1,10 +1,23 @@
 import { FormProvider, useForm } from "react-hook-form"
 import { quizCreateSchema } from "@shared/schemas/quiz.schema"
 import { zodResolver } from "@hookform/resolvers/zod";
-import type { QuizFormData } from "../../../lib/types";
+import type { QuestionFormData, QuizFormData } from "../../../lib/types";
 import QuizDetails from "./QuizDetails";
 import QuestionsSection from "./QuestionsSection";
 
+export const defaultQuestion: QuestionFormData = {
+    questionText: "Who's the best protagonist?",
+    questionType: "multiple-choice",
+    options: [
+        "Monkey D. Luffy",
+        "Strawhat Luffy",
+        "Captain Luffy",
+        "All of the above"
+    ],
+    correctAnswers: ["All of the above"],
+    questionPoint: 1,
+    timeLimit: 0
+}
 const defaultValues: QuizFormData = {
     title: "",
     description: "",
@@ -13,13 +26,15 @@ const defaultValues: QuizFormData = {
     quizTimeLimit: 0,
     maxAttempts: 0,
     questionOrder: "ordered",
-    questions: [],
+    questions: [defaultQuestion],
     passingScore: 1
 }
 
 export default function CreateQuizForm() {
-    const methods = useForm<QuizFormData>({ 
+    // console.log("CreateQuizForm Rendered!");
+    const methods = useForm({ 
         resolver: zodResolver(quizCreateSchema), 
+        mode: "onChange",
         defaultValues
     });
 
@@ -27,8 +42,7 @@ export default function CreateQuizForm() {
         try {
 			await new Promise((resolve) => setTimeout(resolve, 1000));
 
-			console.log(data)
-
+			console.log(data);
 			// reset();
 		} catch (error) {
 			console.error("Error submitting form:", error);
@@ -40,7 +54,6 @@ export default function CreateQuizForm() {
             <form onSubmit={methods.handleSubmit(onSubmit)} className="px-3 flex flex-col justify-center gap-y-3">
                 <QuizDetails />
                 <QuestionsSection />
-                {/* Passing Score */}
                 <button type="submit" className="btn btn-primary">
                     Create
                 </button>

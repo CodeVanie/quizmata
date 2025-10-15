@@ -1,43 +1,38 @@
-import { useFieldArray } from "react-hook-form";
+import { useFieldArray, useFormContext } from "react-hook-form";
 import FieldSetWrapper from "../../../layouts/Quiz/FieldSetWrapper";
 import QuestionOrderSelect from "./QuestionOrderSelect";
 import CreateQuestionItem from "./CreateQuestionItem";
-
-const defaultQuestion = {
-    questionText: "Who's the best protagonist?",
-    questionType: "multiple-choice",
-    options: [
-        "Monkey D. Luffy",
-        "Strawhat Luffy",
-        "Captain Luffy",
-        "All of the above"
-    ],
-    correctAnswers: ["All of the above"],
-    questionPoint: 1,
-    timeLimit: 0
-}
+import { defaultQuestion } from "./CreateQuizForm";
+import NumberInput from "./NumberInput";
 
 export default function QuestionsSection() {
-    const { fields, append, prepend } = useFieldArray({
+    // console.log("QuestionsSection Rendered!");
+    const { control } = useFormContext();
+    const { fields, append, prepend, remove } = useFieldArray({
+        control,
         name: "questions"
-    })
+    });
 
     return (
         <FieldSetWrapper title="Questions">
-            <QuestionOrderSelect />
-            {fields.length > 0 && 
-                <button onClick={() => prepend(defaultQuestion)} className="btn btn-secondary">
+            <div className="grid grid-cols-1 gap-5">
+                <QuestionOrderSelect />
+                <button type="button" onClick={() => prepend(defaultQuestion)} className="btn btn-info flex-1 text-lg font-bold">
                     Add Question
                 </button>
-            }
+            </div>
             <section className="space-y-2">
                 {fields.map((field, index) => (
-                    <CreateQuestionItem key={field.id} index={index} />
+                    <CreateQuestionItem key={field.id} index={index} remove={remove} />
                 ))}
             </section>
-            <button onClick={() => append(defaultQuestion)} className="btn btn-secondary">
-                Add Question
-            </button>
+            <div className="grid grid-cols-1 gap-5">
+                <button type="button" onClick={() => append(defaultQuestion)} className={`btn btn-info flex-1 text-lg font-bold ${fields.length === 0 && "hidden"}`}>
+                    Add Question
+                </button>
+                <NumberInput />
+            </div>
+            
         </FieldSetWrapper>
     )
-}
+};

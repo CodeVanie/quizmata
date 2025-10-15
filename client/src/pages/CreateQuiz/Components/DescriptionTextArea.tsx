@@ -13,7 +13,7 @@ export default function DescriptionTextArea({ label, name, placeholder, register
     return (
         <div>
             <label className="label">{label}</label>
-            <textarea {...register(name)} className="textarea h-24 w-full" placeholder={placeholder} />
+            <textarea {...register(name)} className="textarea h-24 w-full text-xl" placeholder={placeholder} />
         </div>
     )
 }

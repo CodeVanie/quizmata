@@ -1,34 +1,37 @@
 import type { QuizFormData } from "client/src/lib/types";
 import { Controller, useFormContext } from "react-hook-form"
 import QuestionPointInput from "./QuestionPointInput";
+import QuestionTypeSelect from "./QuestionTypeSelect";
+import DeleteButton from "../../../shared/components/Buttons/DeleteButton";
+import QuestionTimerInput from "./QuestionTimerInput";
 
-export default function CreateQuestionItem({ index }: { index: number }) {
+type QuestionItemProps = {
+    index: number;
+    remove: (index: number) => void;
+}
+
+export default function CreateQuestionItem({ index, remove }: QuestionItemProps) {
     const { register, control } = useFormContext<QuizFormData>();
     
     return (
-        <fieldset className="fieldset border-secondary bg-secondary-content rounded-box border p-4 w-full">
-            <div className="flex gap-1">
+        <fieldset className="fieldset border-secondary bg-secondary-content rounded-box border p-3 w-full space-y-3">
+            <DeleteButton onDelete={() => remove(index)} IconSize="6" className="bg-red-500/90 text-secondary-content hover:bg-red-500 active:bg-red-500">
+                <span className="text-xl font-bold">Remove</span>
+            </DeleteButton>
+            <div className="grid grid-cols-1 gap-1">
                 <Controller name={`questions.${index}.questionPoint`} control={control} render={
                     ({ field }) => <QuestionPointInput value={field.value} onChange={field.onChange} />
                 } />
-                <label htmlFor="questionType" className="select select-secondary sm:basis-8/10 w-full">
-                    <span className="label">Type:</span>
-                    <select {...register(`questions.${index}.questionType`)} defaultValue="Question Types" className="select w-full text-nowrap">
-                        <option disabled={true}>Question Types</option>
-                        <option value="multiple-choice">Multiple-Choice</option>
-                        <option value="identification">Identification</option>
-                        <option value="enumeration">Enumeration</option>
-                        <option value="essay">Essay</option>
-                        <option value="fill-in-the-blank">Fill-in-the-blank</option>
-                        <option value="matching-type">Matching-Type</option>
-                        <option value="true-or-false">True-or-False</option>
-                    </select>
+                <Controller name={`questions.${index}.timeLimit`} control={control} render={
+                    ({ field }) => <QuestionTimerInput value={field.value} onChange={field.onChange} />
+                } />
+            </div>
+            <div className="grid grid-cols-1 gap-1">
+                <QuestionTypeSelect index={index} />
+                <label htmlFor={`questions.${index}.questionText`} className="input input-secondary w-full">
+                    <input {...register(`questions.${index}.questionText`)} type="text" placeholder="Add a question title" className="input" />
                 </label>
             </div>
-            <label htmlFor={`questions.${index}.questionText`} className="input input-secondary w-full">
-                <span className="label">Title:</span>
-                <input {...register(`questions.${index}.questionText`)} type="text" placeholder="Add a question title" className="input" />
-            </label> 
         </fieldset>
     )
 }
