@@ -1,21 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@shared/*": ["../shared/*"]
+    },
     "module": "ES2020",
     "moduleResolution": "node",
-    "outDir": "dist",
-    "rootDir": "src",
+    "target": "ES2020",
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "baseUrl": "..",
-    "paths": {
-      "@shared/*": ["shared/*"]
-    } 
-  },
-  "include": ["src/**/*.ts"], 
-  "exclude": ["node_modules"],
-  "references": [
-    { "path": "../shared" }
-  ]
+    "allowSyntheticDefaultImports": true,
+    "strict": true
+  }
 }
