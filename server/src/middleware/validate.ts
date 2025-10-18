@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import { ZodSchema } from "zod";
+import { ZodObject, ZodRawShape } from "zod";
 
-export default function zodValidate(schema: ZodSchema) {
+export default function zodValidate(schema: ZodObject<ZodRawShape>) {
   return (req: Request, res: Response, next: NextFunction) => {
     const result = schema.safeParse(req.body);
 

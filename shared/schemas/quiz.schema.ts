@@ -58,7 +58,7 @@ function validatePassingScore(data: any, ctx: z.RefinementCtx) {
   );
   if (data.passingScore > totalPoints) {
     ctx.addIssue({
-      code: z.ZodIssueCode.custom,
+      code: "custom",
       message: `Passing score cannot exceed total points: ${totalPoints}`,
       path: ["passingScore"],
     });
