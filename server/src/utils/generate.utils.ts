@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import Quiz from "../models/Quiz";
+import Quiz from "../models/Quiz.js";
 
 export async function generateUniqueQuizKey(length = 30): Promise<string> {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

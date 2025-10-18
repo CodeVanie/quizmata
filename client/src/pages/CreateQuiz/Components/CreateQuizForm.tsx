@@ -1,5 +1,5 @@
 import { FormProvider, useForm } from "react-hook-form"
-import { quizCreateSchema } from "@shared/schemas/quiz.schema"
+import { quizCreateSchema } from "@shared/schemas/quizSchema"
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { QuestionFormData, QuizFormData } from "../../../lib/types";
 import QuizDetails from "./QuizDetails";

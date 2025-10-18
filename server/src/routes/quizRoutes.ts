@@ -1,7 +1,7 @@
-import { createQuiz, deleteQuiz, getQuizzes, updateQuiz, updateQuizQuestion } from "../controllers/quizController";
+import { questionUpdateSchema, quizCreateSchema, quizUpdateSchema } from '@shared/schemas/quizSchema.js';
+import { createQuiz, deleteQuiz, getQuizzes, updateQuiz, updateQuizQuestion } from "../controllers/quizController.js";
 import express from "express";
-import zodValidate from "../middleware/validate";
-import { questionUpdateSchema, quizCreateSchema, quizUpdateSchema } from "@shared/schemas/quiz.schema";
+import zodValidate from "../middleware/validate.js";
 
 const router = express.Router();
 

@@ -1,4 +1,4 @@
-import type { questionSchema, quizCreateSchema } from "@shared/schemas/quiz.schema";
+import type { questionSchema, quizCreateSchema } from "@shared/schemas/quizSchema";
 import type z from "zod";
 
 export type QuizzesPageTabs = "created" | "starred" | "taken";
