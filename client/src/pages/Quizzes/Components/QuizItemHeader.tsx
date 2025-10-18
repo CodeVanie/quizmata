@@ -21,7 +21,7 @@ export default function QuizItemHeader({ quizAccess }: { quizAccess: QuizAccessT
                 <button className="btn btn-soft btn-xs btn-warning max-sm:text-[10px]">
                     Edit<PenSquareIcon className="size-4"/>
                 </button>
-                <DeleteButton IconSize="4" className="btn-xs text-red-500 hover:bg-red-500 hover:text-base-100 max-sm:text-[10px]">
+                <DeleteButton onDelete={() => console.log("delete quiz")} IconSize="4" className="btn-xs text-red-500 hover:bg-red-500 hover:text-base-100 max-sm:text-[10px]">
                     Delete
                 </DeleteButton>
             </div>
