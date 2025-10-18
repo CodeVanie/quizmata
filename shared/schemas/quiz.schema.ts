@@ -47,10 +47,7 @@ export const baseQuizSchema = z
     questions: z.array(questionSchema).min(1, "At least one question is required"),
 
     passingScore: z.coerce
-    .number({
-      required_error: "Passing score is required",
-      invalid_type_error: "Passing score must be a number",
-    })
+    .number()
     .min(1, "Passing score cannot be blank or 0")
   });
 
